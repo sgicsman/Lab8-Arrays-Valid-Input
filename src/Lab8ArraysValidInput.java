@@ -22,8 +22,9 @@ public class Lab8ArraysValidInput {
 		for (int i = 0; i < names.length; i++)
 			System.out.println(i + 1 + " " + names[i]);
 
-		String continueCmd = "yes"; //need to change this to a boolean: set as true here, then use validator to set to false for "no" input
-		while (continueCmd == "yes") {
+		boolean continueCmd = true; // need to change this to a boolean: set as true here, then use validator to set
+									// to false for "no" input
+		while (continueCmd) {
 
 			String userPrompt = "Please choose a student about whom to learn more by entering a number between 1 and 7.";
 
@@ -44,10 +45,13 @@ public class Lab8ArraysValidInput {
 				System.out.println(names[userChoice - 1] + "'s hometown is " + hometowns[userChoice - 1] + ".");
 
 			}
-			scnr.nextLine(); // clear the scanner
+			//scnr.nextLine(); // clear the scanner
 			String userPrompt3 = "Would you like to learn about another of our students? Please enter \"yes\" or \"no\".";
 			String userDecision = Validator.getStringMatchingRegex(scnr, userPrompt3, "(yes)|(no)");
-			//here's where I need to set continueCmd to true or false (probably use equalsIgnoreCase.)
+			
+			if (! ( userDecision.contentEquals("yes") ) ) {
+				break;
+			}
 
 		}
 		System.out.println("Thank you for your interest.");
